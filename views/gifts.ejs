@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ccffcc;">
+        <ul class="navbar-nav">
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/lostitems">Lost Items</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/gifts">Gifts</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/units">Units</a>
+          </li>
+        </ul>
+      </nav>
+
+      <label >Choose a unit:</label>
+      <select name="unit" id="unit" onchange="location = this.value;">
+        <optgroup label="Black Eagles">
+          <option value="/users/gifts/Edelgard">Edelgard</option>
+          <option value="/users/gifts/Bernadetta">Bernadetta</option>
+          <option value="/users/gifts/Caspar">Caspar</option>
+          <option value="/users/gifts/Dorothea">Dorothea</option>
+          <option value="/users/gifts/Ferdinand">Ferdinand</option>
+          <option value="/users/gifts/Hubert">Hubert</option>
+          <option value="/users/gifts/Linhardt">Linhardt</option>
+          <option value="/users/gifts/Petra">Petra</option>
+        </optgroup>
+        <optgroup label="Blue Lions">
+          <option value="/users/gifts/Dimitri">Dimitri</option>
+          <option value="/users/gifts/Annette">Annette</option>
+          <option value="/users/gifts/Ashe">Ashe</option>
+          <option value="/users/gifts/Dedue">Dedue</option>
+          <option value="/users/gifts/Felix">Felix</option>
+          <option value="/users/gifts/Ingrid">Ingrid</option>
+          <option value="/users/gifts/Mercedes">Mercedes</option>
+          <option value="/users/gifts/Sylvain">Sylvain</option>
+        </optgroup>
+        <optgroup label="Golden Deer">
+          <option value="/users/gifts/Claude">Claude</option>
+          <option value="/users/gifts/Hilda">Hilda</option>
+          <option value="/users/gifts/Ignatz">Ignatz</option>
+          <option value="/users/gifts/Leonie">Leonie</option>
+          <option value="/users/gifts/Lorenz">Lorenz</option>
+          <option value="/users/gifts/Lysithea">Lysithea</option>
+          <option value="/users/gifts/Marianne">Marianne</option>
+          <option value="/users/gifts/Raphael">Raphael</option>
+        </optgroup>
+        <optgroup label="Garreg Mach Monastery">
+          <option value="/users/gifts/Rhea">Rhea</option>
+          <option value="/users/gifts/Alois">Alois</option>
+          <option value="/users/gifts/Catherine">Catherine</option>
+          <option value="/users/gifts/Cyril">Cyril</option>
+          <option value="/users/gifts/Flayn">Flayn</option>
+          <option value="/users/gifts/Gilbert">Gilbert</option>
+          <option value="/users/gifts/Hanneman">Hanneman</option>
+          <option value="/users/gifts/Jeralt">Jeralt</option>
+          <option value="/users/gifts/Jeritza">Jeritza</option>
+          <option value="/users/gifts/Manuela">Manuela</option>
+          <option value="/users/gifts/Seteth">Seteth</option>
+          <option value="/users/gifts/Shamir">Shamir</option>
+        </optgroup>
+        <optgroup label="Ashen Wolves">
+          <option value="/users/gifts/Yuri">Yuri</option>
+          <option value="/users/gifts/Hapi">Hapi</option>
+          <option value="/users/gifts/Constance">Constance</option>
+          <option value="/users/gifts/Balthus">Balthus</option>
+        </optgroup>
+      </select>
+
+<head>
+  <title>Fetch using MySQL and Node.js</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    table, td, th {  
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 50%;
+     
+    }
+    .table-data{
+        position: relative;
+      left:150px;
+      top:100px;
+    }
+    th, td {
+      padding: 15px;
+    }
+    </style>
+</head>
+<body>
+    <div class="table-data">
+<h2>Gifts</h2>
+    <table border="1">
+        <tr>
+            <th>Gift Name</th>
+            <th>Grade</th>
+            <th>Liked By</th>
+            <th>Disliked By</th>
+            <th>Shop Cost</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.Gift_Name %></td>
+            <td><%=data.Grade %></td>
+            <td><%=data.Favorite_Gift_Of %></td>
+            <td><%=data.Disliked_By %></td>
+            <td><%=data.Shop_Cost %></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>

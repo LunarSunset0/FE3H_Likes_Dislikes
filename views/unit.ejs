@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ccffcc;">
+        <ul class="navbar-nav">
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/lostitems">Lost Items</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/gifts">Gifts</a>
+          </li>
+        </ul>
+      </nav>
+
+<label >Choose a unit:</label>
+<select name="unit" id="unit" onchange="location = this.value;">
+  <optgroup label="Black Eagles">
+    <option value="/users/lostitems/Edelgard">Edelgard</option>
+    <option value="/users/lostitems/Bernadetta">Bernadetta</option>
+    <option value="/users/lostitems/Caspar">Caspar</option>
+    <option value="/users/lostitems/Dorothea">Dorothea</option>
+    <option value="/users/lostitems/Ferdinand">Ferdinand</option>
+    <option value="/users/lostitems/Hubert">Hubert</option>
+    <option value="/users/lostitems/Linhardt">Linhardt</option>
+    <option value="/users/lostitems/Petra">Petra</option>
+  </optgroup>
+  <optgroup label="Blue Lions">
+    <option value="/users/lostitems/Dimitri">Dimitri</option>
+    <option value="/users/lostitems/Annette">Annette</option>
+    <option value="/users/lostitems/Ashe">Ashe</option>
+    <option value="/users/lostitems/Dedue">Dedue</option>
+    <option value="/users/lostitems/Felix">Felix</option>
+    <option value="/users/lostitems/Ingrid">Ingrid</option>
+    <option value="/users/lostitems/Mercedes">Mercedes</option>
+    <option value="/users/lostitems/Sylvain">Sylvain</option>
+  </optgroup>
+  <optgroup label="Golden Deer">
+    <option value="/users/lostitems/Claude">Claude</option>
+    <option value="/users/lostitems/Hilda">Hilda</option>
+    <option value="/users/lostitems/Ignatz">Ignatz</option>
+    <option value="/users/lostitems/Leonie">Leonie</option>
+    <option value="/users/lostitems/Lorenz">Lorenz</option>
+    <option value="/users/lostitems/Lysithea">Lysithea</option>
+    <option value="/users/lostitems/Marianne">Marianne</option>
+    <option value="/users/lostitems/Raphael">Raphael</option>
+  </optgroup>
+  <optgroup label="Garreg Mach Monastery">
+    <option value="/users/lostitems/Rhea">Rhea</option>
+    <option value="/users/lostitems/Alois">Alois</option>
+    <option value="/users/lostitems/Catherine">Catherine</option>
+    <option value="/users/lostitems/Cyril">Cyril</option>
+    <option value="/users/lostitems/Flayn">Flayn</option>
+    <option value="/users/lostitems/Gilbert">Gilbert</option>
+    <option value="/users/lostitems/Hanneman">Hanneman</option>
+    <option value="/users/lostitems/Jeralt">Jeralt</option>
+    <option value="/users/lostitems/Jeritza">Jeritza</option>
+    <option value="/users/lostitems/Manuela">Manuela</option>
+    <option value="/users/lostitems/Seteth">Seteth</option>
+    <option value="/users/lostitems/Shamir">Shamir</option>
+  </optgroup>
+  <optgroup label="Ashen Wolves">
+    <option value="/users/lostitems/Yuri">Yuri</option>
+    <option value="/users/lostitems/Hapi">Hapi</option>
+    <option value="/users/lostitems/Constance">Constance</option>
+    <option value="/users/lostitems/Balthus">Balthus</option>
+  </optgroup>
+</select>
+
+
+<head>
+  <title>Fetch using MySQL and Node.js</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    table, td, th {  
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 50%;
+     
+    }
+    .table-data{
+        position: relative;
+      left:150px;
+      top:100px;
+    }
+    th, td {
+      padding: 15px;
+    }
+    </style>
+</head>
+<body>
+    <div class="table-data">
+<h2>Lost Items</h2>
+    <table border="1">
+        <tr>
+            <th>Unit</th>
+            <th>Strengths</th>
+            <th>Weakness</th>
+            <th>Defining Ability</th>
+            <th>Description</th>
+        </tr>
+        
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td><%=data.Name %></td>
+            <td><%=data.Strengths %></td>
+            <td><%=data.Weaknesses %></td>
+            <td><%=data.Defining_Ability %></td>
+            <td><%=data.Def %></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else{ %>
+            <tr>
+                <td colspan="7">No Data Found</td>
+            </tr>
+        <% } %>
+    </table>
+    </div>
+</body>
+</html>
