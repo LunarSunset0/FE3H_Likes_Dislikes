@@ -53,4 +53,9 @@ router.get('/units', function(req, res, next) {
 });
 });
 
+router.get('/tea', (req,res) => { 
+
+  res.render('error', { title: 'Tea'});
+});
+
 module.exports = router;
