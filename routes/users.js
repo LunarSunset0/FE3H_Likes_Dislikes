@@ -4,7 +4,7 @@ var router = express.Router();
 var db=require('../database');
 
 
-
+//Lost Items 
 router.get('/lostitems', function(req, res, next) {
   var sql='SELECT * FROM lost_items';
   db.query(sql, function (err, data, fields) {
@@ -21,7 +21,7 @@ res.render('lostitems', { title: 'Lost Items', userData: data});
 });
 });
 
-
+//Gift Items 
 router.get('/gifts', function(req, res, next) {
   var sql='SELECT * FROM fe3h_likes_dislikes';
   db.query(sql, function (err, data, fields) {
@@ -45,6 +45,7 @@ router.get('/giftsselect/:id', function(req, res, next) {
 });
 });
 
+//Select Unit
 router.get('/units', function(req, res, next) {
   var sql='SELECT * FROM unitstrengths';
   db.query(sql, function (err, data, fields) {
@@ -53,9 +54,22 @@ router.get('/units', function(req, res, next) {
 });
 });
 
+//Favorite Tea
 router.get('/tea', (req,res) => { 
 
-  res.render('error', { title: 'Tea'});
+  var sql='SELECT * FROM favoriteteas';
+  db.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('tea', { title: 'Favorite Teas', userData: data});
 });
+});
+router.get('/tea/:id', (req,res) => { 
 
+  var sql='SELECT * FROM favoriteteas WHERE CharacterId = ?';
+  var data = [req.params.id]
+  db.query(sql, data, function (err, data, fields) {
+  if (err) throw err;
+  res.render('tea', { title: 'Favorite Teas', userData: data});
+});
+});
 module.exports = router;
