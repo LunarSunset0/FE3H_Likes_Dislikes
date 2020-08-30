@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ccffcc;">
+        <ul class="navbar-nav">
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/lostitems">Lost Items</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/gifts">Gifts</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/units">Units</a>
+          </li>
+          <li class="nav-item" style="padding-left: 20px; padding-right: 20px;">
+            <a class="nav-link" href="/users/tea">Tea</a>
+          </li>
+        </ul>
+      </nav>
+
+
+      <head>
+        <title>Favorite Teas</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+          }
+          
+          table {
+            border-collapse: collapse;
+            width: 50%;
+           
+          }
+          .table-data{
+              position: relative;
+            left:150px;
+            top:100px;
+          }
+          th, td {
+            padding: 15px;
+          }
+          </style>
+      </head>
+      <body>
+        <h2 text-align:center>Find Unit:</h2>
+        <select id="select" onchange="location = this.value;"></select>
+
+          <div class="table-data">
+      <h2>Teas</h2>
+          <table border="1">
+              <tr>
+                  <th>Interrested Topic</th>
+                  <th>Unit</th>
+
+              </tr>
+              
+              <%
+              if(userData.length!=0){
+              var i=1;
+              userData.forEach(function(data){
+              %>
+              <tr>
+                  <td><%=data.InterrestedTopic%></td>
+                  <td><%=data.CharacterId %></td>
+              </tr>
+              <%  i++; }) %>
+              <% } else{ %>
+                  <tr>
+                      <td colspan="7">No Data Found</td>
+                  </tr>
+              <% } %>
+          </table>
+          </div>
+      </body>
+
+      <script>
+        var names = [
+        "Edelgard", "Hubert", "Ferdinand", "Linhardt", "Caspar", "Bernadetta", "Dorothea", "Petra",
+        "Dimitri", "Dedue", "Felix", "Ashe", "Sylvain", "Mercedes", "Annette", "Ingrid", 
+        "Claude", "Lorenz", "Raphael", "Ignatz", "Lysithea", "Marianne", "Hilda", "Leonie",
+        "Seteth", "Flayn", "Hanneman", "Manuela", "Gilbert", "Alois", "Catherine", "Shamir", "Cyril", "Rhea", 
+        "Jeritza", "Anna", 
+        "Yuri", "Balthus", "Constance", "Hapi"];
+        var sel = document.getElementById('select');
+        var options = "";
+        var opt = document.createElement('option');
+        opt.appendChild( document.createTextNode("Select Unit"));
+        sel.appendChild(opt); 
+        Object.keys(names).forEach(function(element) {
+            //var hrefHolder = "/users/tea/"+names[element];
+            //console.log(href);
+            //options += "<option>" + names[element] +"</option>";
+            //options += '<option></option>';
+            //console.log(names[element])
+            //value="/users/lostitems/Edelgard">
+            var opt = document.createElement('option');
+            opt.appendChild( document.createTextNode(names[element]));
+            opt.value = "/users/tea/"+names[element];
+            sel.appendChild(opt);  
+        });
+
+        //options += "<option>"+ i +"</option>";
+        //document.getElementById("select").innerHTML = options;
+    </script>
+</html>

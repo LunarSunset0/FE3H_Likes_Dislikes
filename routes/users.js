@@ -72,4 +72,42 @@ router.get('/tea/:id', (req,res) => {
   res.render('tea', { title: 'Favorite Teas', userData: data});
 });
 });
+
+//Tea Conversations
+router.get('/teatopic', (req,res) => { 
+
+  var sql='SELECT * FROM teatopics';
+  db.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('teaconv', { title: 'Teas Topics', userData: data});
+});
+});
+router.get('/teatopic/:id', (req,res) => { 
+
+  var sql='SELECT * FROM teatopics WHERE CharacterId = ?';
+  var data = [req.params.id]
+  db.query(sql, data, function (err, data, fields) {
+  if (err) throw err;
+  res.render('teaconv', { title: 'Teas Topics', userData: data});
+});
+});
+
+//Final Tea Conv
+router.get('/teaanswers', (req,res) => { 
+
+  var sql='SELECT * FROM teaanswers';
+  db.query(sql, function (err, data, fields) {
+  if (err) throw err;
+  res.render('teafinal', { title: 'Final Tea Topics', userData: data});
+});
+});
+router.get('/teaanswers/:id', (req,res) => { 
+
+  var sql='SELECT * FROM teaanswers WHERE CharacterId = ?';
+  var data = [req.params.id]
+  db.query(sql, data, function (err, data, fields) {
+  if (err) throw err;
+  res.render('teafinal', { title: 'Final Tea Topics', userData: data});
+});
+});
 module.exports = router;
